@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>旋转木马</title>
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/carousel.css">
+  </head>
+  <body style="padding: 50px;">
+    <div class="J_Poster poster-main" data-setting='{
+      "width": 840,
+      "height": 270,
+      "posterWidth": 640,
+      "posterHeight": 270,
+      "scale": 0.9,
+      "speed": 500,
+      "veritcalAlign": "middle"
+                                                    }'>
+      <div class="poster-btn poster-prev-btn"></div>
+      <ul class="poster-list">
+        <li class="poster-item"><a href="#"><img src="images/1.jpg" alt=""></a></li>
+        <li class="poster-item"><a href="#"><img src="images/2.jpg" alt=""></a></li>
+        <li class="poster-item"><a href="#"><img src="images/3.jpg" alt=""></a></li>
+        <li class="poster-item"><a href="#"><img src="images/4.jpg" alt=""></a></li>
+        <li class="poster-item"><a href="#"><img src="images/5.jpg" alt=""></a></li>
+      </ul>
+      <div class="poster-btn  poster-next-btn"></div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script src="js/carousel.js"></script>
+    <script type="text/javascript">
+
+      $(function(){
+        // Carousel 类
+        // var carousel = new Carousel($('.J_Poster').eq(0));     // 传进去一个
+
+        // 参数配置在 data-setting中，要用json格式，单引号套双引号
+
+        Carousel.init($('.J_Poster'));      //传进去一个集合
+
+      })
+
+    </script>
+  </body>
+</html>
