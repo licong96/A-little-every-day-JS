@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .placeholder {
+        background-color: #f6f6f6;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .placeholder img {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: opacity 1s linear;
+      }
+
+      .placeholder img.loaded {
+        opacity: 1;
+      }
+
+      .img-small {
+        filter: blur(50px);
+        /* this is needed so Safari keeps sharp edges */
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="placeholder" data-large="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1500542686&di=b7e833e2bbf3396d5b9c884f99f05b50&src=http://f.hiphotos.baidu.com/lvpics/w=1000/sign=2464a9c0bd0e7bec23da07e11f1ebb38/9d82d158ccbf6c819d6f9127b93eb13532fa40a0.jpg">
+      <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1500542686&di=b7e833e2bbf3396d5b9c884f99f05b50&src=http://f.hiphotos.baidu.com/lvpics/w=1000/sign=2464a9c0bd0e7bec23da07e11f1ebb38/9d82d158ccbf6c819d6f9127b93eb13532fa40a0.jpg" class="img-small">
+      <div style="padding-bottom: 66.6%;"></div>
+    </div>
+
+    <script type="text/javascript">
+
+      window.onload = function() {
+
+        var placeholder = document.querySelector('.placeholder'),
+            small = placeholder.querySelector('.img-small')
+
+        // 1: load small image and show it
+        var img = new Image();
+        img.src = small.src;
+        img.onload = function () {
+         small.classList.add('loaded');
+        };
+
+        // 2: load large image
+        var imgLarge = new Image();
+        imgLarge.src = placeholder.dataset.large;
+        imgLarge.onload = function () {
+          imgLarge.classList.add('loaded');
+        };
+        placeholder.appendChild(imgLarge);
+      }
+
+    </script>
+  </body>
+</html>
