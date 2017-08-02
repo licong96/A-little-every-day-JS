@@ -42,10 +42,12 @@
           background: url(../icon/next.png) no-repeat right center;
         }
       }
+      &.disabled {
+        display: none;
+      }
     }
     .lightbox-image{
       display: block;
-      width: 100%;
     }
   }
   .lightbox-pic-caption{
@@ -55,7 +57,7 @@
     background-color: rgba(0,0,0,.5);
     color: #fff;
     .lightbox-caption-area{
-      padding: 18px 5px;
+      padding: 10px 5px;
       .lightbox-pic-desc{
         margin: 0;
       }
@@ -64,8 +66,10 @@
       position: absolute;
       right: 10px;
       top: 13px;
+      z-index: 2;
       width: 27px;
       height: 27px;
+      cursor: pointer;
       background: url(../icon/close.png) no-repeat center center;
     }
   }

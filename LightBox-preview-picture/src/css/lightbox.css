@@ -25,9 +25,10 @@
     #G-lightbox-popup .lightbox-pic-view .lightbox-btn {
       position: absolute;
       top: 0;
+      z-index: 1;
       width: 40%;
       height: 100%;
-      z-index: 1;
+      background: url("../icon/transparent.png") repeat left top;
       cursor: pointer; }
       #G-lightbox-popup .lightbox-pic-view .lightbox-btn.lightbox-prev-btn {
         left: 0; }
@@ -37,9 +38,10 @@
         right: 0; }
         #G-lightbox-popup .lightbox-pic-view .lightbox-btn.lightbox-next-btn.lightbox-next-btn-show {
           background: url(../icon/next.png) no-repeat right center; }
+      #G-lightbox-popup .lightbox-pic-view .lightbox-btn.disabled {
+        display: none; }
     #G-lightbox-popup .lightbox-pic-view .lightbox-image {
-      display: block;
-      width: 100%; }
+      display: block; }
   #G-lightbox-popup .lightbox-pic-caption {
     position: relative;
     margin: 0 5px;
@@ -47,13 +49,15 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff; }
     #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area {
-      padding: 18px 5px; }
+      padding: 10px 5px; }
       #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area .lightbox-pic-desc {
         margin: 0; }
     #G-lightbox-popup .lightbox-pic-caption .lightbox-close-btn {
       position: absolute;
       right: 10px;
       top: 13px;
+      z-index: 2;
       width: 27px;
       height: 27px;
+      cursor: pointer;
       background: url(../icon/close.png) no-repeat center center; }
