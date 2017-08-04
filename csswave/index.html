@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      /*底部全屏波浪*/
+      body{
+        overflow: hidden;
+        position: relative;
+        min-height: 100vh;
+        align-items: center;
+        background-color: rgb(188, 218, 255);
+      }
+      body:before,
+      body:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        min-width: 300vw;
+        min-height: 300vw;
+        background-color: #fff;
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      body:before{
+        bottom: 15vh;
+        border-radius: 45%;
+        animation-duration: 10s;
+      }
+      body:after{
+        opacity: .5;
+        bottom: 12vh;
+        border-radius: 47%;
+        animation-duration: 10s;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: translate3d(-50%, 0, 0) rotateZ(0deg);
+        }
+        50% {
+          transform: translate3d(-50%, -2%, 0) rotateZ(180deg);
+        }
+        100% {
+          transform: translate3d(-50%, 0, 0) rotateZ(360deg);
+        }
+      }
+
+      /*45%圆形滚动*/
+      .box{
+        width: 200px;
+        height: 200px;
+        border-radius: 45%;
+        background-color: #f0f;
+        animation: rotates 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      @keyframes rotates {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /*圈里的波浪*/
+      .wave {
+        overflow: hidden;
+        position: relative;
+        margin-top: 50px;
+        width: 200px;
+        height: 200px;
+        background-color: rgb(118, 218, 255);
+        border: 1px solid rgb(118, 218, 255);
+        border-radius: 50%;
+      }
+      .wave:before,
+      .wave:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 10;
+        width: 400px;
+        height: 400px;
+        background-color: rgba(255, 255, 255, .4);
+        border-radius: 45%;
+        transform: translate3d(-50%, -70%, 0) rotate(0);
+        animation: rotate3 6s linear infinite;
+      }
+      .wave:after {
+        z-index: 11;
+        background-color: rgba(255, 255, 255, .9);
+        border-radius: 47%;
+        transform: translate3d(-50%, -70%, 0) rotate(0);
+        animation: rotate3 10s linear infinite;
+      }
+      @keyframes rotate3 {
+        0% {
+          transform: translate3d(-50%, -70%, 0) rotateZ(0deg);
+        }
+        50% {
+          transform: translate3d(-50%, -73%, 0) rotateZ(180deg);
+        }
+        100% {
+          transform: translate3d(-50%, -70, 0) rotateZ(360deg);
+        }
+      }
+
+      .tansY li{
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .5);
+        list-style: none;
+      }
+      .tansY li:nth-child(1){
+        left: 15%;
+        animation: 10s 3s transtop infinite;
+      }
+      .tansY li:nth-child(2){
+        left: 28%;
+        animation: 12s 5s transtop infinite;
+      }
+      .tansY li:nth-child(3){
+        left: 35%;
+        animation: 8s 2s transtop infinite;
+      }
+      .tansY li:nth-child(4){
+        left: 43%;
+        animation: 13s 7s transtop infinite;
+      }
+      .tansY li:nth-child(5){
+        left: 50%;
+        animation: 11s 11s transtop infinite;
+      }
+      .tansY li:nth-child(6){
+        left: 66%;
+        animation: 6s 9s transtop infinite;
+      }
+      .tansY li:nth-child(7){
+        left: 75%;
+        animation: 9s 9s transtop infinite;
+      }
+      .tansY li:nth-child(8){
+        left: 80%;
+        animation: 14s transtop infinite;
+      }
+      @keyframes transtop {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, -200px, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+
+    <div class="container">
+      <div class="wave">
+        <ul class="tansY">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
