@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .ul1 {
+        overflow: hidden;
+        margin: 20px auto;
+        height: auto;
+        border: 1px #000 solid;
+        border-bottom: none;
+        border-right: none;
+      }
+      .ul1 li {
+        float: left;
+        border: 1px solid #000;
+        border-top: none;
+        border-left: none;
+      }
+      .ul1 li.style1 {
+        background-color: red;
+      }
+      .ul1 li.style2 {
+        background-color: green;
+      }
+      .ul1 li.style3 {
+        background-color: blue;
+      }
+      .btn1 {
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="ul1" id="ul1">
+
+    </ul>
+    <button type="button" class="btn1" id="btn1">开始寻路</button>
+
+    <script type="text/javascript">
+      var oUl = document.getElementById('ul1');
+      var aLi = oUl.getElementsByTagName('li');
+      var oBtn = document.getElementById('btn1');
+      var beginLi = oUl.getElementsByClassName('style1');      // 起始点
+      var endLi = oUl.getElementsByClassName('style2')         // 结束点
+
+      // 网格地图
+      var map = [
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,
+          0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      ];
+
+
+      var cols = Math.sqrt(map.length);    // 网格个数
+      // console.log(cols)
+      var sizeGird = 20;                  // 网格宽高
+
+
+      init();
+
+      function init() {
+        createMap();
+      }
+
+      // 创建节点
+      function createMap() {
+        oUl.style.width = cols * (sizeGird + 1) + 1 + 'px';        // ul宽度
+
+        for (var i = 0; i < map.length; i++) {
+          var oLi = document.createElement('li');
+          oLi.style.width = oLi.style.height = sizeGird + 'px';
+          oUl.appendChild(oLi)
+
+          // 1是起始位置， 2是目标位置， 3是障碍物
+          if (map[i] === 1) {
+            oLi.className = 'style1'
+          } else if (map[i] === 2) {
+            oLi.className = 'style2'
+          } else if (map[i] === 3) {
+            oLi.className = 'style3'
+          }
+        }
+
+      }
+
+
+      // 估价函数
+      function f(nodeLi) {
+        return g(nodeLi) + h(nodeLi)
+      }
+
+      function g(nodeLi) {
+        var a = beginLi[0].offsetLeft - nodeLi.offsetLeft;
+        var b = beginLi[0].offsetTop - nodeLi.offsetTop;
+        return Math.sqrt(a*a + b*b)
+      }
+
+      function h(nodeLi) {
+        var a = endLi[0].offsetLeft - nodeLi.offsetLeft;
+        var b = endLi[0].offsetTop - nodeLi.offsetTop;
+        return Math.sqrt(a*a + b*b)
+      }
+
+    </script>
+  </body>
+</html>

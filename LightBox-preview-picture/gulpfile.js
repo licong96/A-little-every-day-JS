@@ -97,4 +97,4 @@ gulp.task('watch', function () {
 
 // 本地开发服务器
 gulp.task('server', ['connect', 'watch']);
-gulp.task('build', ['minify-html', 'concat-css']);
+gulp.task('build', ['minify-html', 'concat-css', 'minify-js']);

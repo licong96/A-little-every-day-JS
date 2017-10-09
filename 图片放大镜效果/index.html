@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{margin: 0;}
+    #div1 {
+      position: relative;
+      margin: 50px;
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+    }
+    #div1 span {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      opacity: 0.5;
+    }
+    #div2 {
+      position: absolute;
+      left: 300px;
+      top: 50px;
+      width: 500px;
+      height: 500px;
+      overflow: hidden;
+    }
+    #div2 img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">
+    <img src="b2.jpg" class="mini">
+    <span class="mark"></span>
+  </div>
+  <div id="div2">
+    <img src="b1.jpg" class="big">
+  </div>
+
+  <script type="text/javascript">
+
+    function Scale() {
+      this.oBox = null;
+      this.oImg = null;
+      this.oSpan = null;
+
+      this.settings = {    // 默认参数
+      }
+    };
+
+    Scale.prototype = {
+      // constructor: Scale,
+      init: function (opt) {    // 初始化
+        extend(this.settings, opt);
+
+        // 元素
+        this.oBox = document.querySelector('#' + this.settings.el);
+        this.oImg = document.querySelector('.mini');
+        this.oSpan = document.querySelector('.mark');
+        this.oBigImg = document.querySelector('.big');
+
+        // 事件
+        this.oBox.addEventListener('mouseover', () => this.markShow());
+        this.oBox.addEventListener('mouseout', () => this.markHide());
+        this.oBox.addEventListener('mousemove', () => this.markOffset());
+      },
+      markShow: function () {    // 遮罩方块显示
+        this.oSpan.style.display = 'block'
+      },
+      markHide: function () {    // 遮罩方块隐藏
+        this.oSpan.style.display = 'none'
+      },
+      markOffset: function (ev) {  // 遮罩方块跟鼠标移动
+        var ev = ev || window.event;
+        let oBox = this.oBox;
+        let oSpan = this.oSpan;
+        let X = ev.clientX;
+        let Y = ev.clientY;
+        let L = X - oBox.offsetLeft - oSpan.offsetWidth / 2;
+        let T = Y - oBox.offsetTop - oSpan.offsetWidth / 2;
+        if (L < 0) {
+          L = 0;
+        } else if (L > oBox.offsetWidth - oSpan.offsetWidth) {
+          L = oBox.offsetWidth - oSpan.offsetWidth
+        } else if (T < 0) {
+          T = 0;
+        } else if (T > oBox.offsetHeight - oSpan.offsetHeight) {
+          T = oBox.offsetHeight - oSpan.offsetHeight
+        }
+        oSpan.style.left = L + 'px';
+        oSpan.style.top = T + 'px';
+
+        // 找比例
+        var scaleX = L / (oBox.offsetWidth - oSpan.offsetWidth);
+        var scaleY = T / (oBox.offsetHeight - oSpan.offsetHeight);
+
+        this.oBigImg.style.left = - scaleX * (this.oBigImg.offsetWidth - oBox.offsetWidth) + 'px';
+        this.oBigImg.style.top = - scaleY * (this.oBigImg.offsetHeight - oBox.offsetHeight) + 'px';
+      }
+    };
+
+    var sImg = new Scale();
+    sImg.init({
+      el: 'div1'
+    })
+
+    // 配置参数替换默认参数
+    function extend(obj1, obj2) {
+      for (var attr in obj2) {
+        obj1[attr] = obj2[attr]
+      }
+    }
+  </script>
+</body>
+</html>

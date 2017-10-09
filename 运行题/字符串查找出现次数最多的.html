@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    var str = 'abbccdefghidkklllmn'
+
+    function test(str) {
+
+      var obj = {        // 保存成集合
+        // a : [],
+        // b : [],
+        // c : []
+      };
+
+      var num = 0;
+      var value = '';
+
+      for (var i = 0; i < str.length; i++) {
+        if ( !obj[ str[i] ] ) {    // 如果创建过一次就不创建了
+          obj[ str[i] ] = []
+        }
+
+        obj[ str[i] ].push( str[i] )       // 相同的添加到一起
+      }
+
+      // 算出现最多的字符是谁
+      for (var attr in obj) {
+        if (num < obj[attr].length) {
+          num = obj[attr].length
+          value = obj[attr][0]
+        }
+      }
+      console.log('出现最多的是' + value + '，一共出现' + num +'次')
+    }
+
+    test(str)
+
+  </script>
+</body>
+</html>

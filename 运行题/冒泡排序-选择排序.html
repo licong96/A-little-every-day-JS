@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+    // 冒泡排序，比较相邻两个值
+    function aaa(arr) {
+
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr.length - i; j++) {
+          toGon(j, j+1)
+        }
+      }
+
+      function toGon(prev, next) {
+        var tmp = '';      // 空杯子
+        if (arr[prev] > arr[next]) {
+          tmp = arr[prev];
+          arr[prev] = arr[next];
+          arr[next] = tmp
+        }
+      }
+      return arr;
+    };
+
+    // alert( aaa([4, 5, 2, 1, 7]) )
+
+
+    // 选择排序，找出最小值
+    function bbb(arr) {
+
+      if (arr.length == 1) {
+        return arr
+      }
+
+      var iMin = arr[0];
+      var iIndex = 0;
+
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < iMin) {
+          iMin = arr[i];
+          iIndex = i;
+        }
+      }
+
+      var prev = arr.splice(iIndex, 1);
+      return prev.concat(bbb(arr))
+    }
+
+    alert( bbb([4, 5, 2, 1, 8, 3]) )
+
+
+  </script>
+</body>
+</html>

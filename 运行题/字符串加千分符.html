@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+    var str = '2131239312374'
+
+    function test(str) {
+
+      var iNum = str.length % 3;      // 0,1,2
+
+      var prev = '';
+      var arr = [];
+      var iNow = 0;
+      var tmp = '';
+
+      if (iNum != 0) {
+        prev = str.substring(0, iNum);      // 截取出来
+        arr.push(prev)
+      }
+
+      str = str.substring(iNum);
+
+      for (var i = 0; i < str.length; i++) {
+        iNow++;
+        tmp += str[i];
+
+        if (iNow == 3 && tmp) {
+          arr.push(tmp);
+          tmp = '';
+          iNow = 0;
+        }
+      }
+      console.log(arr.join(','))
+      return arr.join(',')
+    }
+
+    test(str)
+
+  </script>
+</body>
+</html>

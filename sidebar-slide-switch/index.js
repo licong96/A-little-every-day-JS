@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 
   // 菜单列表构造函数，位置放在Sidebar之前声明，因为在Sidebar中调用了
   var Menubar = function() {

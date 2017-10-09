@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {margin: 0;}
+    .box {
+      position: absolute;
+      left: 0;
+      bottom: 50px;
+      width: 100%;
+      text-align: center;
+    }
+    .box img {
+      width: 64px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="input">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+  </div>
+
+  <div class="box">
+    <img src="images/1.png" alt="">
+    <img src="images/2.png" alt="">
+    <img src="images/3.png" alt="">
+    <img src="images/4.png" alt="">
+    <img src="images/5.png" alt="">
+  </div>
+
+  <script type="text/javascript">
+
+    var aInput = document.getElementsByTagName('input');
+    var oBox = document.querySelector('.box');
+    var aImg = oBox.getElementsByTagName('img');
+
+    document.onmousemove = function (ev) {
+      var ev = ev || window.event;
+
+      // 每个图标的中心位置
+      for (let i = 0; i < aImg.length; i++) {
+        let x = aImg[i].offsetLeft + aImg[i].offsetWidth / 2;
+        let y = aImg[i].offsetTop + aImg[i].offsetHeight / 2 + oBox.offsetTop;
+
+        // 勾股定理，a边的平方加上b边的平方等于斜线的平方， a^2 + b^2 = c^2
+        var a = ev.clientX - x;
+        var b = ev.clientY - y;
+
+        var c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+        var scale = 1 - c / 300;     // 取一个缩放比例， 用 1 减最小的值，变成最大值
+        if (scale < 0.5) {
+          scale = 0.5;
+        }
+        aInput[i].value = scale;
+
+        aImg[i].style.width = aImg[i].style.height = scale * 128 + 'px';
+      };
+    }
+
+
+
+  </script>
+</body>
+</html>
