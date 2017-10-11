@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box {
+      overflow: auto;
+      width: 500px;
+      height: 500px;
+      border: 10px solid #ddd;
+    }
+    #main {
+      height: 800px;
+      margin: 20px;
+      background-color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div id="main"></div>
+  </div>
+
+  <script>
+    var oBox = document.getElementById('box');
+    var main = document.getElementById('main');
+    // 给定宽高小于浏览器窗口：
+    // document.body.scrollWidth 通常是浏览器窗口的宽高
+    // document.body.scrollHeight 通常是浏览器窗口的高度
+    console.log('document.body.scrollWidth: ' + document.body.scrollWidth);
+    console.log('document.body.scrollHeight: ' + document.body.scrollHeight);
+
+    // scrollWidth 内容宽度 + padding + margin + border
+    console.log('oBox.scrollWidth: ' + oBox.scrollWidth);
+    console.log('oBox.scrollHeight: ' + oBox.scrollHeight);
+    console.log('main.scrollWidth: ' + main.scrollWidth);
+    console.log('main.scrollHeight: ' + main.scrollHeight);
+
+
+    // scrollTop，scrollLeft 被浏览器卷起的高度
+
+
+  </script>
+</body>
+</html>

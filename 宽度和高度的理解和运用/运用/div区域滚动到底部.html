@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .box {
+        overflow: auto;
+        margin: 50px auto 50px auto;
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+      p {
+        height: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <p></p>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+
+    // var clients = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    // var scrollHeight = document.body.scrollHeight;
+    //
+    // console.log('window.innerHeight: '+ clients);
+    // console.log('document.body.scrollHeight:' + scrollHeight);
+
+    var oBox = document.querySelector('.box');
+    var oHeight = oBox.scrollHeight;
+    var oClientHeight = oBox.clientHeight;
+
+    console.log(oHeight);
+    console.log(oClientHeight);
+
+    function divScroll() {
+      var oScrollTop = oBox.scrollTop;
+      console.log(oScrollTop);
+
+      if (oClientHeight + oScrollTop >= oHeight) {
+        alert('已到底部')
+      } else if (oScrollTop === 0) {
+        alert('滚动到顶部')
+      }
+    }
+
+    oBox.onscroll = divScroll;
+
+  </script>
+</html>

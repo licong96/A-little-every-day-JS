@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>offset</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 10px;
+      padding: 40px;
+      width: 500px;
+      height: 350px;
+      border: 30px solid #ccc;
+    }
+    #box {
+      overflow: auto;
+      margin: 10px;
+      padding: 20px;
+      width: 400px;
+      height: 200px;
+      border: 20px solid #ddd;
+      background-color: red;
+    }
+    p {
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box">
+    <p>移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏</p>
+  </div>
+
+  <script type="text/javascript">
+
+    // offsetWidth，offsetHeight = border + padding + width
+    var oBox = document.getElementById('box')
+
+    console.log('document.body.offsetWidth:' + document.body.offsetWidth);
+    console.log('document.body.offsetHeight:' + document.body.offsetHeight);
+
+    // border*2 + padding*2
+    console.log('oBox.offsetWidth:' + oBox.offsetWidth);
+    console.log('oBox.offsetHeight:' + oBox.offsetHeight);
+
+
+    // offsetLeft，offsetTop，基于父级 offsetParent，aboulute和relative会影响到元素
+    // 自身的margin + 父级margin + padding + border， 火狐浏览器不加父级border值
+    console.log('oBox.offsetLeft:' + oBox.offsetLeft);
+    console.log('oBox.offsetTop:' + oBox.offsetTop);
+
+  </script>
+</body>
+</html>

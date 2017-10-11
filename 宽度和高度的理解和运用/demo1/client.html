@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>client</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box1 {
+      margin: 20px;
+      padding: 30px;
+      width: 300px;
+      height: 300px;
+      border: 10px solid #ccc;
+      background: red;
+      overflow: auto;
+    }
+    p {
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box1"><p>移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏移出隐藏</p></div>
+
+  <script type="text/javascript">
+
+    var oBox1 = document.getElementById('box1')
+
+    console.log('document.body.clientWidth:' + document.body.clientWidth);
+    console.log('document.body.clientHeight:' + document.body.clientHeight);
+
+    // 容器 width　+　padding，如果有滚动条，那就再减去滚动条，大概17px
+    console.log('oBox1.clientWidth:' + oBox1.clientWidth);
+    console.log('oBox1.clientHeight:' + oBox1.clientHeight);
+
+
+    // clientLeft，clientTop 读取元素的 border 值的宽，高
+    console.log('oBox1.clientLeft:' + oBox1.clientLeft);
+    console.log('oBox1.clientTop:' + oBox1.clientTop);
+
+
+    // 获取可视区，兼容写法
+    var clientWidht = document.documentElement.clientWidth || document.body.clientWidth;
+    console.log(clientWidht);
+  </script>
+</body>
+</html>

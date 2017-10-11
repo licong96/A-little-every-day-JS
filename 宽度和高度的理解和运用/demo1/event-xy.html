@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      margin: 100px auto;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    p{
+      height: 700px;
+    }
+  </style>
+</head>
+<body>
+  <p></p>
+  <div id="box"></div>
+
+  <script type="text/javascript">
+    var oBox = document.getElementById('box');
+
+    oBox.onclick = function (event) {
+      // var ev = event || window.event;
+      console.log(event);
+      // clientX 和 clientY 相对于浏览器可视区左上角（ 0,0）的坐标
+      console.log('client: ' +　event.clientX　+'-'+　event.clientY);
+
+      // screenX 和 screenY 相对于设备屏幕左上角（0,0）的坐标
+      console.log('screen: ' +　event.screenX　+'-'+　event.screenY);
+
+      // offsetX 和 offsetY 相对于事件源左上角（0,0）的坐标
+      console.log('offset: ' +　event.offsetX　+'-'+　event.offsetY);
+
+      // pageX 和 pageY 相对于整个网页左上角（0,0）的坐标
+      console.log('page: ' +　event.pageX　+'-'+　event.pageY);
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+      // 获取滚动轴宽度，用 offsetWidth - clientWidth
+      function getScrollBar() {
+        var el = document.createElement('p');
+        var styles = {
+          width: '100px',
+          height: '100px',
+          overflowY: 'scroll'
+        };
+
+        for (let i in styles) {
+          el.style[i] = styles[i];
+        }
+
+        document.body.appendChild(el);
+        var scrollBarWidth = el.offsetWidth - el.clientWidth;
+        el.remove();
+        return scrollBarWidth;
+      }
+
+      console.log(getScrollBar());
+  </script>
+</body>
+</html>

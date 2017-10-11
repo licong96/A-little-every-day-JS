@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .box {
+        margin: 30px;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        border: 10px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var oBox = $('.box');
+
+      // .width() 容器自身宽度
+      console.log('width: ' + oBox.width());
+
+      // .innerWidth() 容器自身宽度 + padding
+      console.log('innerWidth: ' + oBox.innerWidth());
+
+      // .outerWidth() 容器自身宽度 + padding + border
+      console.log('outerWidth: ' + oBox.outerWidth());
+
+      // 可以传值，参数为 true，表示加上 margin
+      console.log('outerWidth(true): ' + oBox.outerWidth(true));
+
+
+      // .offset() 相对于 document 的当前坐标值
+      console.log(oBox.offset());
+
+      // .position() 相对于offsetparent父级定位元素的当前坐标值
+      console.log(oBox.position());
+
+    </script>
+  </body>
+</html>
