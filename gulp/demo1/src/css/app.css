@@ -1,0 +1,40 @@
+
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 1.5; }
+
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: #ddd; }
+  .main .section {
+    margin: 50px auto 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd; }
+    .main .section .box {
+      background-color: red;
+      text-align: center;
+      -webkit-box-shadow: 1px 1px 3px #666;
+              box-shadow: 1px 1px 3px #666; }
+      .main .section .box .span {
+        font-size: 20px;
+        color: #fff; }
+      .main .section .box .a {
+        display: block;
+        font-size: 14px; }
+
+.box .title {
+  font-size: 20px; }
+
+.box .p {
+  margin-top: 20px;
+  color: green; }

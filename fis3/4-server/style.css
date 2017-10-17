@@ -1,0 +1,16 @@
+body {
+	background-color: #FFCCFF;
+}
+
+li {
+  position: relative;
+  list-style: none;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: -15px;
+}

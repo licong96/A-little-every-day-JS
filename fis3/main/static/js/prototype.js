@@ -1,0 +1,1 @@
+function Li(i,o){this.a=i,this.b=o}Li.prototype.cong=function(){console.log(this.a,this.b)};
