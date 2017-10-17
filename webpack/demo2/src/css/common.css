@@ -1,0 +1,20 @@
+@import "./flex.css";
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  line-height: 1.5;
+  font-size: 12px;
+  background-color: red;
+}
+ul,
+li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,13 @@
+.layer {
+  display: flex;
+  width: 600px;
+  height: 200px;
+  box-shadow: 1px 1px 3px #ddd;
+}
+.main {
+  width: 400px;
+  height: 200px;
+  border: 1px solid red;
+  transform: translate(20px, 30px);
+  background: url(../../images/4.png) no-repeat;
+}
