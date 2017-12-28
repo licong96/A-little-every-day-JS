@@ -1,4 +1,4 @@
-// 结构赋值
+// Destructuring
 
 console.log('数组解构')
 {
@@ -14,12 +14,15 @@ console.log('数组解构')
   console.log(rest);   // [3 4 5 6]
 }
 
-
-console.log('对象解构')
 {
-  let {a, b} = {a: 1, b: 2}
-  console.log(a)  // 1
-  console.log(b)  // 2
+  let x;
+  if ([1][0] === undefined) {
+    x = f();
+  } else {
+    x = [1][0];
+  }
+  console.log('[1][0]', [1][0])
+  console.log(x)
 }
 
 {
@@ -68,6 +71,13 @@ console.log('变量交换')
 }
 
 console.log('对象结构赋值------------')
+
+
+{
+  let { a, b } = { a: 1, b: 2 }
+  console.log(a)  // 1
+  console.log(b)  // 2
+}
 {
   let o = {
     p: 10,
@@ -95,4 +105,21 @@ console.log('对象结构赋值------------')
   let {title: esTitle, test: [{title: cnTitle, desc: riDesc}]} = metaData   // 多层结构，格式要求严格
 
   console.log(esTitle, cnTitle, riDesc)     // bac, test, description
+}
+
+{
+  const node = {
+    loc: {
+      start: {
+        line: 1,
+        column: 5
+      }
+    }
+  };
+  
+  let { loc, loc: { start }, loc: { start: { line, column } } } = node;
+  console.log(loc)    // Object {start: Object}
+  console.log(start)  // Object {line: 1, column: 5}
+  console.log(line)    // 1
+  console.log(column)  // 5
 }

@@ -1,2 +1,6 @@
-// import './deconstruction'
-import './String'
+// import './Destructuring'
+// import './String'
+// import './Number.js'
+// import './Function.js'
+// import './Promise.js'
+import './Class.js'

@@ -110,6 +110,6 @@ module.exports = {
     compress: true,
     inline: true,
     quiet: true,    // 开启错误提示
-    port: 8083
+    port: 8084
   }
 }
