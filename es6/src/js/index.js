@@ -3,4 +3,5 @@
 // import './Number.js'
 // import './Function.js'
 // import './Promise.js'
-import './Class.js'
+// import './Class.js'
+import './Arr.js'
