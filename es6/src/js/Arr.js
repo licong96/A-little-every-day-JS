@@ -27,3 +27,25 @@
 {
   console.log('number', [1, 2, 3, NaN].includes(1));      // true 是否存在
 }
+
+{
+  // 增、查、改、删
+  let array = []
+
+  // 增
+  array.push({t: 1})
+  console.log(array)  // [{t: 1}]
+
+  // 查
+  let array_exist = array.find(item => item.t)
+  console.log(array_exist)  // {t: 1}
+
+  // 改
+  array.forEach(item => item.t ? item.t = 2 : '')
+  console.log(array)      // [{t: 2}]
+
+  // 删
+  let index = array.findIndex(item => item.t)
+  array.splice(index, 1)
+  console.log(array)      // []
+}

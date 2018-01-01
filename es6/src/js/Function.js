@@ -49,3 +49,13 @@
   var a = [];
   push(a, 1, 2, 3)
 }
+
+{
+  function tail(x) {
+    console.log('尾调用', x)
+  }
+  function fx(x) {
+    return tail(x)
+  }
+  fx(123)
+}
