@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    var obj = {};
+    var fn = function () {};
+
+    obj.prop = 'hitsuke (distraction)';
+    fn.prop = 'tanuki (climbing)';
+
+    console.log(obj)
+    console.log(fn)
+    console.log(fn.prop)
+
+
+    var store = {
+      nextId: 1,
+      cache: {},
+      add: function(fn) {
+        if (!fn.id) {
+          fn.id = this.nextId++;
+          return this.cache[fn.id] = fn;
+        }
+      }
+    }
+
+    function ninja() {}
+
+    store.add(ninja)
+    store.add(ninja)
+
+    console.log(store)
+
+    function smallest(...arr) {
+      console.log(...arr)
+      return Math.min(...arr)
+    }
+
+    var sm = smallest(1, 2, 3, 4, 0)
+    console.log(sm)
+
+
+    function merge(root) {
+      for (var i = 0; i < arguments.length; i++) {
+        for (var key in arguments[i]) {
+          root[key] = arguments[i][key];
+        }
+      }
+      return root;
+    }
+
+    var merged = merge(
+      {name: 'lc', words: 2000},
+      {name: 'ls', words: 200}
+    )
+  </script>
+</body>
+</html>

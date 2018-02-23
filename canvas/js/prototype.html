@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		function Person() {
+			var per = 1;
+		}
+		Person.prototype.dance = function () {
+			this.per = 2
+			return this.per
+		}
+		var p = new Person();
+
+		function Ninja() {}
+		Ninja.prototype = {
+			dance: Person.prototype.dance
+		}
+
+		console.log(p.dance())
+
+		var ninja = new Ninja();
+
+		console.log(ninja.dance)
+		
+	</script>
+</body>
+</html>

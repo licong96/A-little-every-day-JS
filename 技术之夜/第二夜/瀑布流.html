@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      position: relative;
+      margin: 50px auto;
+      width: 1000px;
+      border: 1px solid red;
+    }
+    .loader {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -15px;
+      width: 30px;
+      height: 30px;
+      background: url("loader.gif") no-repeat;
+      background-size: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="container">
+
+  </section>
+  <div class="loader"></div>
+
+  <script src="jquery-1.9.1.min.js"></script>
+  <script>
+    $(function () {
+
+      // 计算列
+      var oContainer = $("#container");
+      var iWidth = 200;    // 列宽
+      var iSpance = 10;    // 间距
+      var iOuterWidth = iWidth + iSpance;    // 列实际宽度
+      var iCells = 0;    // 总列
+
+      function setCells() {
+        iCells = Math.floor($(window).innerWidth() / iOuterWidth);
+        console.log(iCells)
+        console.log(iOuterWidth * iCells - iSpance)
+        oContainer.css('width', iOuterWidth * iCells - iSpance)
+      };
+
+      setCells();
+    });
+  </script>
+</body>
+</html>

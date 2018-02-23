@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+	<link rel="stylesheet" href="demo.css">
+	<script>
+		window.onload = function() {
+			var aLi = document.querySelectorAll('ul li');
+			var aBtn = document.querySelectorAll('ol li');
+			var currentIndex = 0;
+
+			for (let i = 0; i < aBtn.length; i++) {
+					aBtn[i].onmouseover = function () {
+						// aBtn.forEach((item, index) => {
+						// 	item.classList.remove('active');
+						// 	aLi[index].style.display = 'none'
+						// })
+
+						// 记录上一个
+						aLi[currentIndex].style.display = 'none';
+						aBtn[currentIndex].classList.remove('active');
+						currentIndex = i
+
+						this.classList.add('active');
+						aLi[i].style.display = 'block';
+					}
+			}
+		};
+	</script>
+</head>
+
+<body>
+	<div id="box">
+		<ul>
+			<li style="display:block"><img src="images/1.jpg" alt="" /></li>
+			<li><img src="images/2.jpg" alt="" /></li>
+			<li><img src="images/3.jpg" alt="" /></li>
+			<li><img src="images/4.jpg" alt="" /></li>
+			<li><img src="images/5.jpg" alt="" /></li>
+		</ul>
+		<ol>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+</body>
+
+</html>
