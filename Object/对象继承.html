@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		function inherit(Sub, Super){
+		    function F(){}
+		    F.prototype = Super.prototype;
+		    Sub.prototype = new F();
+		    Sub.constructor = Sub;
+		}
+
+		function Person(name, age, gender){
+		    if(!(this instanceof Person)){
+		        return new Person(name, age, gender);
+		    }
+		    this.name = name;
+		    this.age = age;
+		    this.gender = gender;
+		}
+		Person.prototype.sayHello = function(){ console.log("Hello, my name is " + this.name); };
+		var somebody = new Person("youxia", 30, "male");
+		var another = new Person("another", 20, "female");
+
+		function Worker(name, age, gender, speciality){
+		    if(!(this instanceof Person)){
+		        return new Worker(name, age, gender, speciality);
+		    }
+		    Person.call(this, name, age, gender);
+		    this.speciality = speciality;
+		}
+
+		inherit(Worker, Person);
+
+		Worker.prototype.doWork = function(){console.log(this.name + " is working with " + this.speciality);}
+
+		var worker = new Worker("youxia", 30, "male", ["JavaScript","HTML","CSS"]);
+		worker.sayHello(); //从Person类继承的
+		worker.doWork();   //Worker类中自己定义的
+
+	</script>
+</body>
+</html>
