@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#" class="link">链接一</a>
+      <a href="#" class="link">链接二</a>
+      <a href="#" class="link">链接三</a>
+      <a href="#" class="link">链接四</a>
+    </nav>
+  </header>
+
+  <div class="center">
+    <!-- 内容区域 -->
+  </div>
+
+  <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+          <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#00c99b"></stop>
+              <stop offset="100%" stop-color="#ff0ea1"></stop>
+          </linearGradient>
+          <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffd392"></stop>
+              <stop offset="100%" stop-color="#ff3898"></stop>
+          </linearGradient>
+          <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#110046"></stop>
+              <stop offset="100%" stop-color="#32004a"></stop>
+          </linearGradient>
+      </defs>
+      <path class="shape-overlays__path" d="M 0 0C 25 0 25 0 50 0 C 75 0 75 0 100 0 V 0 H 0"></path>
+      <path class="shape-overlays__path" d="M 0 0C 25 0 25 0 50 0 C 75 0 75 0 100 0 V 0 H 0"></path>
+      <path class="shape-overlays__path" d="M 0 0C 25 0 25 0 50 0 C 75 0 75 0 100 0 V 0 H 0"></path>
+      <!-- <path class="shape-overlays__path" d="M 0 0C 25 0 25 0 50 0 C 75 0 75 0 100 0 V 0 H 0"></path> -->
+  </svg>
+
+  <script src="./index.js"></script>
+  <script type="text/javascript">
+      const elmHamburger = document.querySelectorAll('.link');
+      const elmOverlay = document.querySelector('.shape-overlays');
+      const overlay = new ShapeOverlays(elmOverlay);
+
+      for (let i = 0; i < elmHamburger.length; i++) {
+        elmHamburger[i].addEventListener('click', () => {
+          overlay.toggle();
+        });
+      };
+
+  </script>
+</body>
+
+</html>
