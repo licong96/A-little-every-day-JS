@@ -1,0 +1,56 @@
+body {
+  background-color: #72C9B9;
+}
+
+
+.flubber {
+	position: absolute;
+	top: 40%;
+	left: 9%;
+    z-index: 10;
+}
+.flubber .flubber-guy {
+    background: url(./flubber.png) left top no-repeat;
+    height: 28px;
+    width: 22px;
+}
+.flubber .flubber-guy .flubber-eyes {
+    background: url(./flubber-eyes.png) left top no-repeat;
+    margin-left: 2px;
+    height: 16px;
+    width: 16px;
+}
+.flubber .flubber-quote {
+    background: #87d1c3;
+    border-radius: 6px;
+    opacity: 0;
+    width: 180px;
+	font-size: 11px;
+    list-style-type: none;
+	text-align: center;
+	color: #fff;
+	line-height: 14px;
+	padding: 6px 18px;
+    margin: 0px;
+    position: absolute;
+    left: 35px;
+    bottom: 38px;
+
+    -webkit-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.flubber .flubber-quote.show {
+    opacity: 1;
+    left: 22px;
+}
+.flubber .flubber-quote:before {
+    background: url("./flubber-ballon.png") left bottom no-repeat;
+    left: 1px;
+    bottom: -6px;
+    position: absolute;
+    content: "";
+    height: 6px;
+    width: 13px;
+}
