@@ -1,0 +1,50 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">选择排序</h1>
+    <p class="page__desc">Selection Sort</p>
+  </div>
+  <div class="w page__bd page__bd_spacing">
+
+  </div>
+  <div class="w page__ft">
+    <a href="javascript:home()">
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var index = {
+      init() {
+        let arr = [3, 2, 4, 5, 1];
+        console.log(this.test(arr))
+      },
+      test(arr) {
+        let leng = arr.length, i, j, min, mide;
+
+        for (i = 0; i < leng; i++) {
+
+          // 当前位置设置为最小
+          min = i;
+
+          // 检查数组其余部分是否更小
+          for (j = i + 1; j < leng; j++) {
+            if (arr[j] < arr[min]) {
+              min = j;    // 拿到最小值下标
+            }
+          }
+
+          // 如果当前位置不是最小值，将其换为最小值
+          if (i != min) {
+            mide = arr[i];
+            arr[i] = arr[min];
+            arr[min] = mide;
+          }
+        }
+
+        return arr;
+      },
+    };
+
+    index.init();
+  });
+</script>

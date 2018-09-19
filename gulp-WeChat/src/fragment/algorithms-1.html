@@ -1,0 +1,86 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">algorithms</h1>
+    <p class="page__desc">算法练习</p>
+  </div>
+  <div class="w page__bd page__bd_spacing">
+
+  </div>
+  <div class="w page__ft">
+    <a href="javascript:home()">
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    /**
+     * 重复字符串
+     * @param  {String} str [需要重复的字符]
+     * @param  {Number} num [要重复多少次]
+     * @return {String}     [返回重复后的字符串]
+     */
+    var repeat = (function () {
+      // 方法一
+      var repeat1 = function (str, num) {
+        return (num < 0) ? '' : Array(num).fill(str).join('');
+      }
+      // 方法二
+      var repeat2 = function (str, num) {
+        let result = '';
+        for (let i = 0; i < num; i++) {
+          result += str
+        }
+        return result;
+      }
+
+      return {
+        repeat1,
+        repeat2,
+      }
+    })();
+
+    /**
+     * 找出字符串中最长的单词并输出其长度
+     * @param  {String} str [字符串]
+     * @return {Object}     [输出单词和长度]
+     */
+    var findLongestWord = (function () {
+      // 方法一
+      var findLongestWord1 = function (str) {
+        let arr = str.split(' ');
+        let result = [];
+
+        result.unshift(arr[0]);
+
+        arr.forEach(item => {
+          if (item.length > result[0].length) {
+            result.unshift(item)
+          }
+        });
+        return {
+          word: result[0],
+          length: result[0].length
+        }
+      }
+      return {
+        findLongestWord1
+      }
+    })();
+
+
+    var main = {
+      init() {
+        // this.test1();
+        console.log(this.findLongestWord1('May thes force be with you'))
+      },
+      // 重复字符串
+      test1() {
+        console.log(this.repeat1('123', 1))
+      },
+    };
+
+    var index = Object.create(Object.assign({}, main, repeat, findLongestWord));
+
+    index.init();
+  });
+</script>

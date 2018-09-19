@@ -1,0 +1,167 @@
+<div class="page home">
+  <div class="page__hd">
+    <h1 class="page__title">
+            <img class="home__pic" src="./images/licong.jpg" alt="licong" />
+        </h1>
+    <p class="page__desc">黎聪的代码测试和笔记。</p>
+  </div>
+  <div class="page__bd page__bd_spacing">
+    <ul>
+      <li>
+        <div class="weui-flex js_category">
+          <p class="weui-flex__item">HTML</p>
+          <img src="./images/icon_nav_form.png" alt="">
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="" href="javascript:;">
+              <div class="weui-cell__bd">
+                <p>暂无</p>
+              </div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="weui-flex js_category">
+          <p class="weui-flex__item">CSS</p>
+          <img src="./images/icon_nav_form.png" alt="">
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="" href="javascript:;">
+              <div class="weui-cell__bd">
+                <p>暂无</p>
+              </div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="weui-flex js_category">
+          <p class="weui-flex__item">JavaScript</p>
+          <img src="./images/icon_nav_form.png" alt="">
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="reg-exp" href="javascript:;">
+              <div class="weui-cell__bd">
+                <p>正则表达式</p>
+              </div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="event" href="javascript:;">
+              <div class="weui-cell__bd">事件</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="weui-flex js_category">
+          <p class="weui-flex__item">代码测试</p>
+          <img src="./images/icon_nav_form.png" alt="">
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="mocha" href="javascript:;">
+              <div class="weui-cell__bd">单元测试——mocha</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="weui-flex js_category">
+          <p class="weui-flex__item">算法练习</p>
+          <img src="./images/icon_nav_form.png" alt="">
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="algorithms-1" href="javascript:;">
+              <div class="weui-cell__bd">基础算法</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="algorithms-2" href="javascript:;">
+              <div class="weui-cell__bd">冒泡排序</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="algorithms-3" href="javascript:;">
+              <div class="weui-cell__bd">选择排序</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+        <div class="page__category js_categoryInner">
+          <div class="weui-cells page__category-content">
+            <a class="weui-cell weui-cell_access js_item" data-id="algorithms-4" href="javascript:;">
+              <div class="weui-cell__bd">插入排序</div>
+              <div class="weui-cell__ft"></div>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="page__ft">
+    <a href="javascript:home()">
+      </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var winH = $(window).height();
+    var categorySpace = 10;
+
+    $('.js_item').on('click', function() {
+      var id = $(this).data('id');
+      window.pageManager.go(id);
+    });
+    $('.js_category').on('click', function() {
+      var $this = $(this),
+        $inner = $this.next('.js_categoryInner'),
+        $page = $this.parents('.page'),
+        $parent = $(this).parent('li');
+      var innerH = $inner.data('height');
+      bear = $page;
+
+      if (!innerH) {
+        $inner.css('height', 'auto');
+        innerH = $inner.height();
+        $inner.removeAttr('style');
+        $inner.data('height', innerH);
+      }
+
+      if ($parent.hasClass('js_show')) {
+        $parent.removeClass('js_show');
+      } else {
+        $parent.siblings().removeClass('js_show');
+
+        $parent.addClass('js_show');
+        if (this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH) {
+          var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+          if (scrollTop > this.offsetTop) {
+            scrollTop = this.offsetTop - categorySpace;
+          }
+
+          $page.scrollTop(scrollTop);
+        }
+      }
+    });
+  });
+</script>

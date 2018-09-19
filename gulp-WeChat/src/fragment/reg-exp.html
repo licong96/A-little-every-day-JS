@@ -1,0 +1,283 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">RegExp</h1>
+    <p class="page__desc">正则表达式</p>
+  </div>
+  <div class="w page__bd page__bd_spacing">
+
+    <div class="reg-exp__test">
+      <h3 class="code-title">修饰符</h3>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">g</span>全文搜索，不添加就只搜索到第一个匹配停止</li>
+        <li class="code-item">
+          <span class="code">i</span>不区分大小写</li>
+        <li class="code-item">
+          <span class="code">m</span>多行搜索</li>
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">原义字符</h3>
+      <p class="code-desc">代表它原来含义的字符 例如：abc、123</p>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">元字符</h3>
+      <p class="code-desc">在正则表达式中有特殊意义的非字母字符</p>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">\b</span>表示匹配单词边界</li>
+        <li class="code-item">
+          <span class="code">\t</span>水平制表符</li>
+        <li class="code-item">
+          <span class="code">\v</span>垂直制表符</li>
+        <li class="code-item">
+          <span class="code">\n</span>换行符</li>
+        <li class="code-item">
+          <span class="code">\r</span>回车符</li>
+        <li class="code-item">
+          <span class="code">\f</span>换页符</li>
+        <li class="code-item">
+          <span class="code">\0</span>空字符</li>
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">字符类</h3>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">[]</span>构建一个类，所谓类是指符合某些特征的对象，一个泛指，而不是特指某个字符，里面匹配的任意字符，也是可以是范围</li>
+        <li class="code-item">
+          <span class="code">^</span>字符类取反</li>
+        * + ? $ ^ . \ () {} []
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">边界</h3>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">^</span>已什么开头</li>
+        <li class="code-item">
+          <span class="code">$</span>已什么结尾</li>
+        <li class="code-item">
+          <span class="code">\b</span>单词边界</li>
+        <li class="code-item">
+          <span class="code">\B</span>非单词边界</li>
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">量词</h3>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">?</span>出现零次或一次，最多出现一次（
+          <=1）</li>
+            <li class="code-item">
+              <span class="code">+</span>出现一次或多次，至少出现一次（>=1）</li>
+            <li class="code-item">
+              <span class="code">*</span>出现零次或多次，任意次</li>
+            <li class="code-item">
+              <span class="code">{n}</span>出现n次</li>
+            <li class="code-item">
+              <span class="code">{n,m}</span>出现n到m次</li>
+            <li class="code-item">
+              <span class="code">{n,}</span>出现至少n次</li>
+      </ul>
+      <p class="code-desc">作用于紧跟着的一个字符，想匹配多个要用分组</p>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">分组</h3>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">()</span>可以达到分组的功能，使量词作用于分组</li>
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">位置匹配</h3>
+      <p class="code-desc">正则表达式是匹配模式，要么匹配字符，要么匹配位置。</p>
+      <div class="code-pre">
+        // 位置是相邻字符之间的位置，匹配位置共有6个锚字符
+        <p>^ $ \b \B (?=p) (?!p)</p>
+      </div>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">^</span>脱字符）匹配开头，在多行匹配中匹配行开头。
+        </li>
+        <li class="code-item">
+          <span class="code">$</span>美元符号）匹配结尾，在多行匹配中匹配行结尾。
+        </li>
+        <li class="code-item">
+          <span class="code">\b</span>是单词边界，具体就是\w和\W之间的位置，也包括\w和^之间的位置，也包括\w和$之间的位置。
+        </li>
+      </ul>
+      <p class="code-desc">比如一个文件名是"[JS] Lesson_01.mp4"中的\b，如下：</p>
+      <div class="code-pre">
+        <p>var result = "[JS] Lesson_01.mp4".replace(/\b/g, '#');</p>
+        <p>// => "[#JS#] #Lesson_01#.#mp4#"</p>
+      </div>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">匹配测试</h3>
+      <p class="code-desc">表示字符串中是否包含能与表达式模式匹配的字符串</p>
+      <div class="code-pre">
+        <p>console.log(/abc/.test("abcde"));</p>
+        // → true
+        <p>console.log(/abc/.test("abxde"));</p>
+        // → false
+      </div>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">字符集</h3>
+      <p class="code-desc">下面两个表达式都可以匹配包含数字的字符串</p>
+      <div class="code-pre">
+        <p>console.log(/[0123456789]/.test("in 1996"));</p>
+        // → true
+        <p>console.log(/[0-9]/.test("in 1996"));</p>
+        // → true
+      </div>
+      <p class="code-desc">许多常见字符组都有自己的内置简写。 数字就是其中之一：\ d与[0-9]表示相同的东西。</p>
+      <ul class="code-list">
+        <li class="code-item">
+          <span class="code">\d</span>任意数字符号</li>
+        <li class="code-item">
+          <span class="code">\w</span>字母和数字符号（单词符号）</li>
+        <li class="code-item">
+          <span class="code">\s</span>任意空白符号（空格，制表符，换行符等类似符号）</li>
+        <li class="code-item">
+          <span class="code">\D</span>非数字符号</li>
+        <li class="code-item">
+          <span class="code">\W</span>非字母和数字符号</li>
+        <li class="code-item">
+          <span class="code">\S</span>非空白符号</li>
+        <li class="code-item">
+          <span class="code">.</span> 除了换行符以外的任意符号</li>
+        <li class="code-item">
+          <span class="code">^</span> 来排除某个字符集</li>
+      </ul>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">部分模式重复</h3>
+      <p class="code-desc">在正则表达式某个元素后面添加一个加号（+），表示该元素至少重复一次。因此/\d+/可以匹配一个或多个数字字符。</p>
+      <div class="code-pre">
+        <p>console.log(/'\d+'/.test("'123'"));</p>
+        // → true
+        <p>console.log(/'\d+'/.test("''"));</p>
+        // → false
+        <p>console.log(/'\d*'/.test("'123'"));</p>
+        // → true
+        <p>console.log(/'\d*'/.test("''"));</p>
+        // → true
+      </div>
+      <p class="code-desc">我们可以使用花括号准确指明某个模式的出现次数。例如，在某个元素后加上{4}，则该模式需要出现且只能出现 4 次。也可以使用花括号指定一个范围：比如{2,4}表示该元素至少出现 2 次，至多出现 4 次。</p>
+      <div class="code-pre">
+        <p>let dateTime = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/;</p>
+        <p>console.log(dateTime.test("30-1-2003 8:45"));</p>
+        // → true
+      </div>
+      <p class="code-desc">花括号中也可以省略逗号任意一侧的数字，表示不限制这一侧的数量。因此{,5}表示 0 到 5 次，而{5,}表示至少五次。</p>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">子表达式分组</h3>
+      <p class="code-desc">为了一次性对多个元素使用*或者+，那么你必须使用圆括号，创建一个分组。对于后面的操作符来说，圆括号里的表达式算作单个元素。</p>
+      <div class="code-pre">
+        <p>let cartoonCrying = /boo+(hoo+)+/i;</p>
+        <p>console.log(cartoonCrying.test("Boohoooohoohooo"));</p>
+        // → true
+      </div>
+      <p class="code-desc">第一个和第二个
+        <span class="code">+</span>字符分别作用于
+        <span class="code">boo</span>与
+        <span class="code">boo</span>的
+        <span class="code">0</span>字符， 而第三个+字符则作用于整个元组（
+        <span class="code">hoo+</span>），可以匹配
+        <span class="code">hoo+</span>这种正则表达式出现一次及一次以上的情况。</p>
+      <div class="code-pre">
+        <p>let dateTime = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/;</p>
+        <p>console.log(dateTime.test("30-1-2003 8:45"));</p>
+        // → true
+      </div>
+      <p class="code-desc">示例中表达式末尾的
+        <span class="code">i</span>表示正则表达式不区分大小写，虽然模式中使用小写字母，但可以匹配输入字符串中的大写字母B。</p>
+    </div>
+    <div class="reg-exp__test">
+      <h3 class="code-title">匹配和分组</h3>
+      <p class="code-desc">test方法是匹配正则表达式最简单的方法。该方法只负责判断字符串是否与某个模式匹配。正则表达式还有一个exec（执行，execute）方法，如果无法匹配模式则返回null，否则返回一个表示匹配字符串信息的对象。</p>
+      <div class="code-pre">
+        <p>let match = /\d+/.exec("one two 100");</p>
+        <p>console.log(match);</p>
+        // match => [ groups: undefined, index: 8, input: "one two 100", length: 1 ]
+        <p>console.log(match.index);</p>
+        // → 8
+      </div>
+      <p class="code-desc">exec方法返回的对象包含index属性，表示字符串成功匹配的起始位置。除此之外，该对象看起来像（而且实际上就是）一个字符串数组，其首元素是与模式匹配的字符串——在上面的例子中就是我们查找的数字序列。</p>
+    </div>
+
+  </div>
+  <div class="w page__ft">
+    <a href="javascript:home()">
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var index = {
+      init() {
+        this.test4();
+        // this.stringReplace();
+        //  console.log(this.getDate('2018-07-01'));
+        // this.test3();
+        // this.test2();
+        // this.test1();
+      },
+      test4() {
+        let reg = /[abc]/g;
+        let str = 'aoboocoAooc0a';
+
+        console.log(str.replace(reg, 'x'));
+      },
+      stringReplace() {
+        // let reg = /\bis\b/;
+        let reg = /\bis\b/g; // 替换字符串
+        let str = 'He is a boy. This is a dog. Where is she?';
+
+        console.log(str.replace(reg, 'IS'));
+      },
+      getDate(string) {
+        // console.log(/(\d{4})-(\d{1,2})-(\d{1,2})/.exec(string));
+
+        let [_, year, month, day] = /(\d{4})-(\d{1,2})-(\d{1,2})/.exec(string);
+
+        return new Date(year, month - 1, day);
+      },
+      test3() {
+        let match = /\d+/.exec("one two 100");
+        // console.log(Array.isArray(match));
+        // → true
+        // console.log(match);
+        // console.log(match.index);
+        // → 8
+
+        // console.log("one two 100 pp 77".match(/\d+/));
+
+        let quotedText = /'([^']*)'/;
+        console.log(quotedText.exec("she said 'hello'"));
+      },
+      test2() {
+
+        // let dateTime = /\d\d\d\d-\d\d-\d\d \d\d:\d\d/;
+        let dateTime = /\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{2}/;
+        console.log(dateTime.test('2018-07-01 09:23'));
+
+        // console.log(/[0123456789]/.test("in 1996"));
+        // // → true
+        // console.log(/[0-9]/.test("in 1996"));
+        // → true
+      },
+      test1() {
+        // 表示字符串中是否包含能与表达式模式匹配的字符串
+        console.log(/abc/.test("abcde"));
+        // → true
+        console.log(/abc/.test("abxde"));
+        // → false
+      }
+    };
+    index.init();
+  });
+</script>

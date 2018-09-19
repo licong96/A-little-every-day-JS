@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>并归排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /**
+     * 算法步骤
+     */
+
+    var arr = [3, 2, 5, 4, 1, 9, 6, 32, 0, 8];
+
+    console.log(sort(arr))
+
+
+    function sort(arr) {
+      var len = arr.length;
+
+      if (len < 2) {
+        return arr;
+      }
+
+      var middle = Math.floor(len / 2);
+      var leftArray = arr.slice(0, middle);
+      var rightArray = arr.slice(middle, len);
+
+      var leftSortedArray = sort(leftArray);
+      var rightSortedArray = sort(rightArray);
+
+      return merge(leftSortedArray, rightSortedArray);
+    }
+
+
+    function merge(left, right) {
+      var result = [];
+
+      while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+          result.push(left.shift());
+        } else {
+          result.push(right.shift());
+        }
+      }
+
+      while (left.length) {
+        result.push(left.shift());
+      }
+      while (right.length) {
+        result.push(right.shift());
+      }
+
+      return result;
+
+      // return result.concat(left.slice(il)).concat(right.slice(ir));
+    }
+
+  </script>
+</body>
+</html>

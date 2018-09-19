@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">插入排序</h1>
+    <p class="page__desc">insertion Sort</p>
+  </div>
+  <div class="w page__bd page__bd_spacing">
+
+  </div>
+  <div class="w page__ft">
+    <a href="javascript:home()">
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var index = {
+      init() {
+        let arr = [3, 2, 4, 5, 1];
+        console.log(this.test(arr))
+      },
+      test(arr) {
+        let leng = arr.length, value, i, j;
+
+        for (i = 0; i < leng; i++) {
+
+          // 储存当前位置的值
+          value = arr[i];
+
+          for (j = i - 1; j > -1 && arr[j] > value; j--) {
+            arr[j + 1] = arr[j];
+          }
+
+          arr[j + 1] = value;
+        }
+
+        return arr;
+      },
+    };
+
+    index.init();
+  });
+</script>

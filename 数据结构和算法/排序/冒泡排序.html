@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>冒泡排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /**
+     * 算法步骤
+      比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+
+      对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。
+
+      针对所有的元素重复以上的步骤，除了最后一个。
+
+      持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+     */
+
+    var arr = [3, 2, 5, 4, 1, 9, 6, 32, 0, 8];
+
+    var arr2 = Array.prototype.slice.call(arr);
+
+    // 实现方法一
+    for (let i = 0; i < arr.length - 1; i++) {          //  - 1 最后一个不需要循环
+      for (let j = 0; j < arr.length - 1 - i; j ++) {  // -1 里面用了 j + 1，防止超出数组索引
+        if (arr[j] > arr[j + 1]) {
+          exc(arr, j, j + 1)
+        }
+      }
+    }
+    console.log(arr);
+
+
+    // 实现方法二
+    let bool = true,
+        leng = arr2.length;
+
+    while (bool) {
+
+      bool = false;
+
+      for (let i = 0; i < leng - 1; i++) {
+        if (arr2[i] > arr2[i + 1]) {
+          exc(arr2, i, i + 1);
+          bool = true;
+        }
+      }
+      leng--;
+    }
+    console.log(arr2);
+
+
+    // 利用中间变量交换两个值
+    function exc(arr, i, j) {
+      var tem = arr[i];
+      arr[i] = arr[j];
+      arr[j] = tem;
+    }
+  </script>
+</body>
+</html>

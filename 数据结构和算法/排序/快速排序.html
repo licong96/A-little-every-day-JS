@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>快速排序</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /**
+     * 算法步骤
+     */
+
+    var arr = [3, 2, 5, 4, 1, 9, 6, 32, 0, 8];
+
+    // 用来交换两个位置的值
+    function swap(myArray, firstIndex, secondIndex) {
+      var temp = myArray[firstIndex];
+      myArray[firstIndex] = myArray[secondIndex];
+      myArray[secondIndex] = temp;
+    }
+
+    // 用于完成一轮排序
+    function partition(myArray, left, right) {
+
+      var pivot = myArray[Math.floor((left + right) / 2)],
+          i     = left,
+          j     = right;
+
+      while (i <= j) {
+
+        while (myArray[i] < pivot) {
+          i++;
+        }
+
+        while (myArray[j] > pivot) {
+          j--;
+        }
+
+        if (i <= j) {
+          swap(myArray, i, j);
+          i++;
+          j--;
+        }
+
+      }
+      return i;
+    }
+
+    // 递归上面的过程，完成排序
+    function quickSort(myArray, left, right) {
+
+      if (myArray.length < 2) {
+        return myArray;
+      }
+
+      left = (typeof left !== 'number' ? 0 : left);
+      right = (typeof right !== 'number' ? myArray.length - 1 : right);
+
+      var index = partition(myArray, left, right);
+
+      if (left < index - 1) {
+        quickSort(myArray, left, index - 1);
+      }
+
+      if (index < right) {
+        quickSort(myArray, index, right);
+      }
+
+      return myArray;
+    }
+
+    console.log(quickSort(arr))
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">event</h1>
+    <p class="page__desc">事件</p>
+  </div>
+  <div class="w page__bd">
+    <p class="code-desc">事件委托</p>
+    <ul class="event-wrap js_list_wrap">
+      <li class="event-list" data-id="1">列表-1</li>
+      <li class="event-list" data-id="2">列表-2</li>
+      <li class="event-list" data-id="3">列表-3</li>
+      <li class="event-list" data-id="4">列表-4</li>
+    </ul>
+    <div class="event-btn">
+      <button type="button" name="button" class="btn btn-primery js_add">添加一条</button>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var index = {
+      el: {
+        listWrap: document.querySelector('.js_list_wrap'),
+      },
+      init() {
+        this.onLoad();
+        this.bindEvent();
+      },
+      onLoad() {
+        this.bindWrap();
+      },
+      bindEvent() {
+        var list = this.el.listWrap.getElementsByTagName('li');
+        document.querySelector('.js_add').addEventListener('click', () => {
+          this.addList(list.length + 1);
+        })
+      },
+      bindWrap() {
+        var listWrap = this.el.listWrap;
+
+        listWrap.addEventListener('click', function (e) {
+          console.log(e.target)
+          console.log(e.currentTarget)
+          console.log(e.target.getAttribute('data-id'))
+        })
+      },
+      addList(id) {
+        var listWrap = this.el.listWrap;
+
+        var li = document.createElement('li');
+        li.className = 'event-list';
+        li.innerHTML = '列表' + id;
+        li.setAttribute('data-id', id);
+
+        listWrap.appendChild(li)
+      }
+    };
+    index.init();
+  });
+</script>

@@ -1,0 +1,83 @@
+<div class="page">
+  <div class="w page__hd">
+    <h1 class="page__title">mocha</h1>
+    <p class="page__desc">单元测试</p>
+  </div>
+  <div class="w page__bd page__bd_spacing">
+
+    <div class="reg-exp__test">
+      <img class="img" src="./images/mocha-1.png" alt="">
+    </div>
+
+  </div>
+  <div class="w page__ft">
+    <a href="javascript:home()">
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var index = {
+      init() {
+        this.test4();
+        // this.stringReplace();
+        //  console.log(this.getDate('2018-07-01'));
+        // this.test3();
+        // this.test2();
+        // this.test1();
+      },
+      test4() {
+        let reg = /[abc]/g;
+        let str = 'aoboocoAooc0a';
+
+        console.log(str.replace(reg, 'x'));
+      },
+      stringReplace() {
+        // let reg = /\bis\b/;
+        let reg = /\bis\b/g; // 替换字符串
+        let str = 'He is a boy. This is a dog. Where is she?';
+
+        console.log(str.replace(reg, 'IS'));
+      },
+      getDate(string) {
+        // console.log(/(\d{4})-(\d{1,2})-(\d{1,2})/.exec(string));
+
+        let [_, year, month, day] = /(\d{4})-(\d{1,2})-(\d{1,2})/.exec(string);
+
+        return new Date(year, month - 1, day);
+      },
+      test3() {
+        let match = /\d+/.exec("one two 100");
+        // console.log(Array.isArray(match));
+        // → true
+        // console.log(match);
+        // console.log(match.index);
+        // → 8
+
+        // console.log("one two 100 pp 77".match(/\d+/));
+
+        let quotedText = /'([^']*)'/;
+        console.log(quotedText.exec("she said 'hello'"));
+      },
+      test2() {
+
+        // let dateTime = /\d\d\d\d-\d\d-\d\d \d\d:\d\d/;
+        let dateTime = /\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{2}/;
+        console.log(dateTime.test('2018-07-01 09:23'));
+
+        // console.log(/[0123456789]/.test("in 1996"));
+        // // → true
+        // console.log(/[0-9]/.test("in 1996"));
+        // → true
+      },
+      test1() {
+        // 表示字符串中是否包含能与表达式模式匹配的字符串
+        console.log(/abc/.test("abcde"));
+        // → true
+        console.log(/abc/.test("abxde"));
+        // → false
+      }
+    };
+    index.init();
+  });
+</script>
